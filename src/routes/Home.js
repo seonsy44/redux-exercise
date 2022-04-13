@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-function Home() {
+function Home(toDos) {
   const [text, setText] = useState("");
 
   function onSubmit(e) {
@@ -18,9 +19,13 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
         />
       </form>
-      <ul></ul>
+      <ul>{JSON.stringify(toDos)}</ul>
     </>
   );
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return { toDos: state };
+}
+
+export default connect(mapStateToProps)(Home);
