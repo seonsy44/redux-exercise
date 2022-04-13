@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { actionCreators } from "../store";
 
 function ToDo({ text, id }) {
@@ -13,7 +14,8 @@ function ToDo({ text, id }) {
 
   return (
     <li>
-      {text}&nbsp;&nbsp;&nbsp;<span onClick={handleDelete}>×</span>
+      <Link to={`/${id}`}>{text}</Link>&nbsp;&nbsp;&nbsp;
+      <span onClick={handleDelete}>×</span>
     </li>
   );
 }
