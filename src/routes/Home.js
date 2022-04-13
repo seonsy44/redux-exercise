@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators } from "../store";
+import ToDo from "../components/ToDo";
 
 function Home() {
   const [text, setText] = useState("");
@@ -8,7 +9,7 @@ function Home() {
   const toDos = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const { addToDo, deleteToDo } = actionCreators;
+  const { addToDo } = actionCreators;
 
   function onSubmit(e) {
     e.preventDefault();
@@ -26,7 +27,11 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
         />
       </form>
-      <ul>{JSON.stringify(toDos)}</ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <ToDo key={toDo.id} {...toDo} />
+        ))}
+      </ul>
     </>
   );
 }
