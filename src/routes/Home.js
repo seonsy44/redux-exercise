@@ -14,7 +14,7 @@ function Home() {
   function onSubmit(e) {
     e.preventDefault();
     setText("");
-    dispatch(addToDo({ text, id: Date.now() }));
+    dispatch(addToDo(text));
   }
 
   return (
